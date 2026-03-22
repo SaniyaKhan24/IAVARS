@@ -134,11 +134,11 @@ dist
 !.yarn/sdks
 !.yarn/versions
 
-# Vite logs files
+# Vite logs files 
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 
-GOOGLE_API_KEY=AIzaSyAHE3WiWu15b0q9q3divCoYfJ6-uvG4qoI
 .pytest_tmp/
 pytest-cache-files-*/
 .pytest_cache/
+.env
