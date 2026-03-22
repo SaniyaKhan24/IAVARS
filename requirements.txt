@@ -1,0 +1,6 @@
+pandas
+openpyxl
+streamlit
+yt-dlp
+google-generativeai
+python-dotenv
