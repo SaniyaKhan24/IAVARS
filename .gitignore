@@ -137,3 +137,40 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+env/
+venv/
+.venv/
+.Python
+build/
+dist/
+*.egg-info/
+pip-wheel-metadata/
+*.egg
+*.manifest
+*.spec
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.coverage
+.coverage.*
+.cache
+.ipynb_checkpoints/
+*.sqlite3
+.env
+.python-version
+
+# VSCode
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Streamlit
+.streamlit/
