@@ -19,7 +19,6 @@ __pycache__/
 build/
 develop-eggs/
 dist/
-downloads/
 eggs/
 .eggs/
 lib/
@@ -36,15 +35,29 @@ share/python-wheels/
 MANIFEST
 
 # ============================================================================
-# Logs & Downloads
+# Downloaded Videos & Media Files (CRITICAL)
 # ============================================================================
-logs/
-*.log
-logs/download_log.jsonl
 downloads/
+downloads/**
+logs/
+logs/**
+logs/download_log.jsonl
+
+# Video file extensions
 *.mp4
 *.avi
 *.mkv
+*.mov
+*.flv
+*.wmv
+*.webm
+*.m3u8
+*.ts
+*.mts
+*.m2ts
+*.3gp
+*.3g2
+*.mxf
 
 # ============================================================================
 # IDE & Editor
@@ -77,21 +90,29 @@ Thumbs.db
 htmlcov/
 .tox/
 .hypothesis/
+*.pyc
 
 # ============================================================================
-# Google/Cloud Credentials
+# Google/Cloud Credentials (SECURITY CRITICAL)
 # ============================================================================
 *.json
 !package.json
+!requirements.json
 credentials/
 service_account.json
 google_credentials.json
+.env
+.env.local
+.env.*.local
 
 # ============================================================================
-# Temporary Files
+# Temporary & Cache Files
 # ============================================================================
 *.temp
 *.cache
 .cache/
 temp/
 tmp/
+*.part
+*~
+.~*
