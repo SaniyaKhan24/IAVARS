@@ -1,9 +1,10 @@
-# 🎬 Intelligent Agent-Based Video Asset Retrieval System (IAVARS)
+# Intelligent Agent-Based Video Asset Retrieval System (IAVARS)
 
-**Automated bulk video retrieval, organization, and cloud storage management powered by intelligent agent orchestration and LLM-driven classification.**
+**A production-ready pipeline framework for bulk YouTube video downloads with intelligent error handling, parallel execution, and comprehensive audit logging.**
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue?logo=python&logoColor=white)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.95+-darkgreen?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
+[![yt-dlp](https://img.shields.io/badge/yt--dlp-required-red)](https://github.com/yt-dlp/yt-dlp)
 [![License](https://img.shields.io/badge/License-MIT-yellow)](LICENSE)
 
 ---
@@ -11,154 +12,161 @@
 ## 📋 Table of Contents
 
 1. [Overview](#overview)
-2. [Key Features](#key-features)
-3. [System Architecture](#system-architecture)
-4. [Installation](#installation)
-5. [Configuration](#configuration)
-6. [Usage](#usage)
-7. [Project Structure](#project-structure)
-8. [API Endpoints](#api-endpoints)
-9. [Pipeline Workflow](#pipeline-workflow)
-10. [Troubleshooting](#troubleshooting)
-11. [Contributing](#contributing)
-12. [License](#license)
+2. [Feature Status](#feature-status)
+3. [Key Features](#key-features)
+4. [System Architecture](#system-architecture)
+5. [Installation](#installation)
+6. [Configuration](#configuration)
+7. [Usage](#usage)
+8. [Project Structure](#project-structure)
+9. [API Reference](#api-reference)
+10. [Pipeline Stages](#pipeline-stages)
+11. [Error Handling](#error-handling)
+12. [Troubleshooting](#troubleshooting)
+13. [Contributing](#contributing)
 
 ---
 
-## 🎯 Overview
+## Overview
 
-IAVARS is an enterprise-grade, multi-stage pipeline system designed to streamline the bulk retrieval of video assets from diverse online platforms. It automates the complex workflows associated with:
+IAVARS is a production-grade video retrieval system that automates bulk downloading of videos from multiple platforms. The system employs a four-stage pipeline architecture: URL extraction and normalization, rule-based platform classification, intelligent agent assignment, and parallel execution with fault tolerance.
 
-- **Data Ingestion** – Parse spreadsheets (Excel/CSV) containing multimedia URLs
-- **Intelligent Classification** – Use LLM reasoning to classify links and assign appropriate retrieval strategies
-- **Parallel Execution** – Leverage autonomous agents to download assets concurrently
-- **Cloud Storage** – Automatically organize and upload retrieved files to Google Drive
-- **Reporting** – Generate comprehensive success/failure reports and audit trails
+**Primary Use Cases:**
 
-**Ideal for:** Marketing teams, content distributors, archivists, and media professionals managing large-scale video inventory.
+- Content archivists requiring bulk video curation
+- Marketing teams managing video asset libraries
+- Media professionals archiving online content
+- Research teams collecting video datasets
 
 ---
 
-## ✨ Key Features
+## Feature Status
 
-### 1. **Multi-Platform Support**
+### Fully Implemented
 
-- YouTube (public, unlisted, and private videos)
-- Google Drive files
-- Direct CDN and MP4 links
-- Extensible architecture for new platforms
+- **YouTube Video Downloads** – Full support via `yt-dlp` (public videos)
+- **Parallel Execution** – Thread pool with configurable workers (default: 4)
+- **Retry Logic** – Automatic exponential backoff (up to 2 retries)
+- **JSONL Audit Logging** – Structured logs with detailed error categorization
+- **FastAPI Backend** – REST API with OpenAPI documentation
+- **Web UI** – Responsive HTML/CSS/JavaScript interface with real-time progress
+- **Rule-Based Classification** – Deterministic URL parsing (no ML/LLM required)
+- **Error Analysis** – 13+ categorized error types with human-readable explanations
+- **File Upload** – Drag-and-drop Excel/CSV file processing via web interface
 
-### 2. **LLM-Powered Intelligence**
+### Partially Implemented
 
-- Semantic URL classification without hardcoded rules
-- Contextual platform detection
-- Adaptive tool assignment based on link characteristics
-- Support for natural language constraints and filtering
+- **Google Drive Downloads** – Agent exists but only simulates downloads
+- **Direct MP4/CDN Downloads** – Agent exists but only simulates downloads
+- **Vimeo Downloads** – Platform detection works, agent not implemented
+
+### Not Yet Implemented
+
+- **Cloud Storage (Google Drive Upload)** – Storage module exists but not integrated
+- **LLM-Based Classification** – Uses rule-based matching only (not ML/AI)
+- **Hierarchical Cloud Organization** – No automatic folder creation/syncing
+- **Report Generation** – No HTML/XLSX report generation yet
+
+---
+
+## Key Features
+
+### 1. **YouTube Video Downloads (Production Ready)**
+
+- Download public YouTube videos using `yt-dlp`
+- Handles rate limiting and retries gracefully
+- Semantic filename generation (consistent hashing)
+- Parallel downloads with worker pools
+
+### 2. **Rule-Based URL Classification**
+
+- Fast, deterministic platform detection
+- Supports: YouTube (public/private), Google Drive, Vimeo, Direct MP4/CDN
+- No external API calls required
+- Pattern matching with URL parsing
 
 ### 3. **High-Performance Processing**
 
-- Parallel execution via thread pooling (configurable workers)
-- Retry logic with exponential backoff
-- Streaming downloads to minimize memory footprint
+- Parallel execution via `ThreadPoolExecutor`
+- Configurable retry behavior with exponential backoff
+- Memory-efficient streaming
 - Automatic duplicate detection and removal
 
-### 4. **Cloud Integration**
+### 4. **Comprehensive Error Handling**
 
-- Direct integration with Google Drive API
-- Hierarchical folder organization based on platform/category
-- Semantic file renaming using metadata
-- Real-time sync capabilities
+- 13+ categorized failure reasons
+- Machine-readable error codes in JSONL logs
+- Human-readable explanations for each error
+- Examples:
+  - `yt_dlp_not_installed` – Missing YouTube downloader
+  - `video_removed_guidelines` – Community guideline violation
+  - `video_unavailable` – Deleted or restricted video
+  - `platform_not_supported` – Unsupported platform (Vimeo)
 
-### 5. **Comprehensive Monitoring**
+### 5. **Structured Logging**
 
-- JSONL-formatted audit logs with detailed telemetry
-- Real-time progress updates and status tracking
-- Structured error reporting
-- HTML summary reports and broken-link detection
+- JSONL format (one JSON object per line)
+- Tracks: URL, platform, status, timestamp, failure reason, error details
+- Human and machine-readable
+- Easy integration with analytics/dashboards
 
 ### 6. **Web-Based Interface**
 
-- FastAPI REST backend with OpenAPI documentation
+- FastAPI REST backend with Swagger/ReDoc docs
 - Responsive HTML/CSS/JavaScript frontend
-- File upload drag-and-drop support
-- Real-time status streaming
+- File upload with validation
+- Real-time processing status updates
 
 ---
 
-## 🏗️ System Architecture
+## System Architecture
 
-### High-Level Data Flow
+### Pipeline Stages (4 Stages)
 
 ```
-┌─────────────────┐
-│  User Upload    │
-│  (Excel/CSV)    │
-└────────┬────────┘
-         │
-         ▼
-┌─────────────────────────┐
-│  Input Layer            │
-│ (URL Extraction)        │
-│ • Parse spreadsheet     │
-│ • Regex sanitization    │
-│ • Deduplication         │
-└────────┬────────────────┘
-         │
-         ▼
-┌─────────────────────────┐
-│  LLM Classification     │
-│ • Platform detection    │
-│ • Tool recommendation   │
-│ • Domain analysis       │
-└────────┬────────────────┘
-         │
-         ▼
-┌─────────────────────────┐
-│  Agent Assignment       │
-│ • Match agents to tools │
-│ • Load configurations   │
-└────────┬────────────────┘
-         │
-         ▼
-┌─────────────────────────┐
-│  Execution Layer        │
-│ • Parallel downloads    │
-│ • Retry logic           │
-│ • Error handling        │
-└────────┬────────────────┘
-         │
-         ▼
-┌─────────────────────────┐
-│  Storage & Sync         │
-│ • Cloud upload          │
-│ • Organization          │
-│ • Report generation     │
-└─────────────────────────┘
+┌─────────────────────┐
+│  1. URL Extraction  │  Parse spreadsheet, detect URLs, deduplicate
+└────────────┬────────┘
+             │
+             ▼
+┌─────────────────────┐
+│  2. Classification  │  Classify platform (YouTube, GDrive, Vimeo, MP4)
+└────────────┬────────┘
+             │
+             ▼
+┌─────────────────────┐
+│  3. Agent Assignment│  Assign appropriate agent (youtube_agent, drive_agent, etc.)
+└────────────┬────────┘
+             │
+             ▼
+┌─────────────────────┐
+│ 4. Parallel Exec    │  Download with retries, log results to JSONL
+└─────────────────────┘
 ```
 
 ### Module Breakdown
 
-| Module               | Responsibility                                   | Key Files                               |
-| -------------------- | ------------------------------------------------ | --------------------------------------- |
-| **Input Layer**      | Excel parsing, URL extraction, duplicate removal | `pipeline/url_extractor.py`             |
-| **Classification**   | Platform detection, tool mapping                 | `pipeline/url_classifier.py`            |
-| **Agent Assignment** | Autonomous agent orchestration                   | `pipeline/agent_assigner.py`            |
-| **Execution**        | Download execution, retry logic, JSONL logging   | `pipeline/agent_executor.py`            |
-| **API Backend**      | FastAPI endpoints, file serving                  | `api.py`                                |
-| **Frontend**         | Web UI for uploads and monitoring                | `index.html`, `styles.css`, `script.js` |
+| Module              | Purpose                          | Status            | Key File                     |
+| ------------------- | -------------------------------- | ----------------- | ---------------------------- |
+| **URL Extractor**   | Parse Excel/CSV, extract URLs    | ✅ Working        | `pipeline/url_extractor.py`  |
+| **URL Classifier**  | Classify platform by URL pattern | ✅ Working        | `pipeline/url_classifier.py` |
+| **Agent Assigner**  | Map URLs to agents               | ✅ Working        | `pipeline/agent_assigner.py` |
+| **Agent Executor**  | Download via agents, retry, log  | ✅ Working        | `pipeline/agent_executor.py` |
+| **Storage Layer**   | Google Drive upload              | ❌ Not integrated | `pipeline/storage.py`        |
+| **FastAPI Backend** | REST API & web server            | ✅ Working        | `api.py`                     |
+| **Frontend UI**     | Web interface                    | ✅ Working        | `index.html`, `script.js`    |
 
 ---
 
-## 📦 Installation
+## Installation
 
 ### Prerequisites
 
 - **Python 3.8+** (3.10+ recommended)
-- **pip** (Python package manager)
-- **yt-dlp** (system binary for YouTube downloads)
-- **Google Cloud Service Account** (for Drive integration)
+- **pip** or **conda**
+- **yt-dlp** (for YouTube downloads)
 
-### Step 1: Clone the Repository
+### Step 1: Clone & Navigate
 
 ```bash
 git clone <repository-url>
@@ -168,115 +176,118 @@ cd IAVARS
 ### Step 2: Create Virtual Environment
 
 ```bash
-# On Windows
+# Windows
 python -m venv venv
 venv\Scripts\activate
 
-# On macOS/Linux
+# macOS/Linux
 python3 -m venv venv
 source venv/bin/activate
 ```
 
-### Step 3: Install Dependencies
+### Step 3: Install Python Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### Step 4: Install System Dependencies
+**Contents of requirements.txt:**
 
-**For YouTube Support (yt-dlp):**
+```
+pandas>=2.0
+openpyxl>=3.1
+requests>=2.31
+google-api-python-client>=2.0
+google-auth>=2.0
+fastapi>=0.95
+uvicorn>=0.21
+python-multipart>=0.0.5
+yt-dlp>=2023.0.0
+```
+
+### Step 4: Install yt-dlp System Binary
+
+**Windows (via pip):**
 
 ```bash
-# On Windows (via pip)
-pip install yt-dlp
+pip install yt-dlp --upgrade
+```
 
-# On macOS (via Homebrew)
+**macOS:**
+
+```bash
 brew install yt-dlp
-
-# On Linux (via package manager)
-sudo apt install yt-dlp  # Debian/Ubuntu
-sudo yum install yt-dlp  # RedHat/CentOS
 ```
 
-**For Google Drive Support (gdown):**
+**Linux (Debian/Ubuntu):**
 
 ```bash
-pip install gdown
+sudo apt-get install yt-dlp
 ```
 
-### Step 5: Configure Google Cloud Credentials
-
-1. Create a service account on [Google Cloud Console](https://console.cloud.google.com/)
-2. Download the service account JSON file
-3. Set the environment variable:
+**Linux (RedHat/CentOS):**
 
 ```bash
-# On Windows (PowerShell)
-$env:GOOGLE_CREDENTIALS_JSON = "C:\path\to\service_account.json"
+sudo yum install yt-dlp
+```
 
-# On macOS/Linux
-export GOOGLE_CREDENTIALS_JSON="/path/to/service_account.json"
+Verify:
+
+```bash
+yt-dlp --version
 ```
 
 ---
 
-## ⚙️ Configuration
+## Configuration
 
-### Environment Variables
+### Environment Variables (Optional)
 
-Create a `.env` file in the project root:
-
-```env
-# Google Cloud
-GOOGLE_CREDENTIALS_JSON=path/to/service_account.json
-GOOGLE_DRIVE_FOLDER_ID=your_root_folder_id
-
-# LLM Configuration (if using external API)
-LLM_API_KEY=your_api_key
-LLM_MODEL=your_model_name
-
-# Server
-HOST=0.0.0.0
-PORT=8000
-LOG_LEVEL=INFO
-
-# Processing
-MAX_WORKERS=4
-MAX_RETRIES=2
-MAX_FILE_SIZE=52428800  # 50 MB
+```bash
+# Not required for basic YouTube downloads, but useful for future cloud features
+export GOOGLE_CREDENTIALS_JSON="/path/to/service_account.json"
+export GOOGLE_DRIVE_FOLDER_ID="your_folder_id"
 ```
 
 ### Application Settings
 
-Edit `pipeline/main.py` to customize:
+Edit `pipeline/agent_executor.py`:
 
 ```python
-MAX_RETRIES = 2          # Number of retry attempts per download
-MAX_WORKERS = 4          # Thread pool size for parallel execution
-TIMEOUT_SECONDS = 300    # Download timeout (seconds)
+MAX_RETRIES = 2              # Number of retries per download
+MAX_WORKERS = 4              # Thread pool workers
+TIMEOUT_SECONDS = 300        # Download timeout in seconds
+```
+
+Edit `pipeline/url_extractor.py`:
+
+```python
+CHUNK_SIZE = 50_000          # Excel parsing chunk size
+SUPPORTED_EXTENSIONS = {".xlsx", ".csv"}  # Allowed file types
 ```
 
 ---
 
-## 🚀 Usage
+## Usage
 
 ### Option 1: Web Interface (Recommended)
 
-1. **Start the API server:**
+1. **Start the server:**
 
    ```bash
    python api.py
    ```
 
-2. **Open the web interface:**
-
-   Navigate to `http://localhost:8000` in your browser
+2. **Open browser:**
+   Navigate to `http://localhost:8000`
 
 3. **Upload spreadsheet:**
-   - Drag and drop an Excel/CSV file
-   - View real-time processing updates
-   - Download results and reports
+   - Drag & drop Excel/CSV file
+   - View real-time progress
+   - Download videos to `/downloads/` folder
+
+4. **Check logs:**
+   Open `logs/download_log.jsonl` for detailed results
 
 ### Option 2: Python API (Programmatic)
 
@@ -284,115 +295,92 @@ TIMEOUT_SECONDS = 300    # Download timeout (seconds)
 from pipeline.main import run_pipeline
 
 # Process a spreadsheet
-records, summary = run_pipeline("path/to/your_video_links.xlsx")
+records, summary = run_pipeline("path/to/videos.xlsx")
 
-# Print results
+# Results
 print(f"Total: {summary['total']}")
 print(f"Success: {summary['success']}")
 print(f"Failure: {summary['failure']}")
 
 # Access individual records
 for record in records:
-    print(f"URL: {record['url']}")
-    print(f"Status: {record['status']}")
-    print(f"Message: {record['message']}")
+    if record["status"] == "success":
+        print(f"✅ {record['url']} -> {record['message']}")
+    else:
+        print(f"❌ {record['url']} ({record['failure_reason']})")
 ```
 
 ### Option 3: Command Line
 
 ```bash
-# Run the pipeline directly
 python run.py tests/sample_input.csv
-
-# Start API server
-python api.py
-
-# Generate report from logs
-python report_generator.py
 ```
 
-### Option 4: Batch Scripts
-
-**Windows:**
+### Option 4: Start API Server with Custom Port
 
 ```bash
-start_api.bat
-```
-
-**Unix/macOS:**
-
-```bash
-bash start_api.sh
+python api.py --host 0.0.0.0 --port 8080
 ```
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 IAVARS/
-├── api.py                          # FastAPI backend and REST endpoints
-├── index.html                      # Web UI (frontend)
+├── api.py                          # FastAPI backend
+├── index.html                      # Web UI
 ├── styles.css                      # Styling
 ├── script.js                       # Frontend logic
 ├── run.py                          # CLI entry point
-├── report_generator.py             # Report generation utilities
-├── requirements.txt                # Python dependencies
+├── report_generator.py             # Report utilities
+├── requirements.txt                # Dependencies
 │
-├── pipeline/                       # Core processing modules
+├── pipeline/                       # Core modules
 │   ├── __init__.py
 │   ├── main.py                     # Main pipeline orchestrator
-│   ├── url_extractor.py            # Excel parsing & URL extraction
-│   ├── url_classifier.py           # LLM-based classification
-│   ├── agent_assigner.py           # Agent assignment logic
-│   ├── agent_executor.py           # Download execution & retry logic
-│   └── storage.py                  # Google Drive integration
+│   ├── url_extractor.py            # Excel/CSV parsing
+│   ├── url_classifier.py           # Platform classification
+│   ├── agent_assigner.py           # Agent mapping
+│   ├── agent_executor.py           # Download execution & logging
+│   └── storage.py                  # Google Drive integration (not in use)
 │
-├── tests/                          # Test suite
-│   ├── sample_input.csv            # Sample input file
-│   ├── test_url_extractor.py
-│   ├── test_url_classifier.py
-│   ├── test_agent_assigner.py
-│   └── test_agent_executor.py
+├── tests/                          # Test data
+│   ├── sample_input.csv
+│   ├── test_*.py
 │
-├── downloads/                      # Local video storage
-├── logs/                           # Audit logs
-│   └── download_log.jsonl          # Structured download records
+├── downloads/                      # Downloaded videos (local storage)
+├── logs/
+│   └── download_log.jsonl          # Audit logs
 │
-├── INTEGRATION_GUIDE.md            # API integration documentation
-├── system_architecture.md          # Detailed architecture reference
-└── README.md                       # This file
+├── .gitignore
+├── README.md                       # This file
+└── system_architecture.md          # Detailed architecture docs
 ```
 
 ---
 
-## 🔌 API Endpoints
+## API Reference
 
-### Health Check
+### GET /health
 
-```http
-GET /health
-```
+Health check endpoint.
 
 **Response:**
 
 ```json
-{
-  "status": "ok",
-  "message": "Video Asset Processing API is running"
-}
+{ "status": "ok" }
 ```
 
-### Process Videos
+### POST /api/process-videos/
 
-```http
-POST /api/process-videos/
-Content-Type: multipart/form-data
+Processes a spreadsheet containing video URLs.
 
-file: <Excel/CSV file>
-```
+**Parameters:**
 
-**Response:**
+- `file` (multipart/form-data) - Excel or CSV file containing video URLs
+
+Response:
 
 ```json
 {
@@ -401,241 +389,218 @@ file: <Excel/CSV file>
       "url": "https://www.youtube.com/watch?v=abc123",
       "platform": "YouTube_Public",
       "status": "success",
-      "message": "Downloaded -> downloads/youtube_ab12.mp4",
-      "download_link": "http://localhost:8000/downloads/youtube_ab12.mp4",
-      "timestamp": "2026-04-06T12:00:00.000000+00:00"
+      "message": "Downloaded -> downloads/youtube_abc.mp4",
+      "timestamp": "2026-04-06T12:00:00Z",
+      "download_link": "http://localhost:8000/downloads/youtube_abc.mp4",
+      "failure_reason": null
     }
   ],
   "summary": {
-    "total": 1,
-    "success": 1,
-    "failure": 0
+    "total": 10,
+    "success": 8,
+    "failure": 2
   }
 }
 ```
 
-### Download File
+### GET /downloads/{filename}
 
-```http
-GET /downloads/{filename}
+Retrieves a downloaded video file.
+
+### Interactive Documentation
+
+- **Swagger UI:** http://localhost:8000/docs
+- **ReDoc:** http://localhost:8000/redoc
+
+---
+
+## Pipeline Stages
+
+### Stage 1: URL Extraction
+
+**Input:** Excel/CSV file  
+**Process:**
+
+- Read spreadsheet with pandas
+- Detect URL columns via regex
+- Validate and sanitize URLs
+- Remove duplicates
+- Extract metadata (title, category, source column)
+
+**Output:** List of records with URLs and metadata
+
+### Stage 2: URL Classification
+
+**Input:** List of URLs  
+**Process:**
+
+- Parse each URL's domain and path
+- Match against platform patterns (YouTube, GDrive, Vimeo, MP4)
+- Classify type (video, document, etc.)
+
+**Output:** Classified records with platform and type fields
+
+**Platform Detection Rules:**
+
+- `youtube.com`, `youtu.be`, `youtube.com/shorts` → `YouTube_Public`
+- YouTube + auth params → `YouTube_Private`
+- `drive.google.com` → `Google_Drive`
+- `vimeo.com` → `Vimeo`
+- `.mp4`, `.m3u8`, `.webm` extension → `Direct_MP4`
+- Unknown → `Unknown`
+
+### Stage 3: Agent Assignment
+
+**Input:** Classified records  
+**Process:**
+
+- Map platform to agent (youtube_agent, drive_agent, direct_agent, fallback_agent)
+- Map agent to tool (yt-dlp, gdown, requests)
+
+**Output:** Records with agent and tool assignments
+
+### Stage 4: Parallel Execution
+
+**Input:** Agent-assigned records  
+**Process:**
+
+- Spawn thread pool (default: 4 workers)
+- Each worker executes assigned agent
+- Agent downloads video to `/downloads/`
+- Retry on failure (up to 2 retries)
+- Log result to JSONL with error categorization
+
+**Output:** Downloaded files + JSONL logs
+
+---
+
+## Error Handling
+
+All failures are categorized in JSONL logs with machine-readable codes and human-friendly descriptions:
+
+| Failure Reason             | Cause                    | Solution                               |
+| -------------------------- | ------------------------ | -------------------------------------- |
+| `yt_dlp_not_installed`     | yt-dlp not in PATH       | `pip install yt-dlp`                   |
+| `video_removed_guidelines` | YouTube policy violation | Video permanently unavailable          |
+| `video_unavailable`        | Deleted or restricted    | Contact uploader                       |
+| `video_age_restricted`     | Age-restricted content   | Requires authentication                |
+| `video_deleted`            | Uploader deleted video   | Check URL                              |
+| `video_private`            | Private/restricted       | Request access                         |
+| `access_denied`            | Permission denied (403)  | Check credentials                      |
+| `network_error`            | Connection timeout       | Check internet                         |
+| `invalid_url`              | URL not found (404)      | Verify URL                             |
+| `drive_download_failed`    | Google Drive error       | File may be restricted                 |
+| `platform_not_supported`   | No agent available       | Platform not implemented (e.g., Vimeo) |
+| `unknown_error`            | Unexpected error         | Check logs                             |
+
+**Example JSONL Log Entry:**
+
+```json
+{
+  "url": "https://www.youtube.com/watch?v=abc123",
+  "status": "failure",
+  "message": "yt-dlp executable not found. Install yt-dlp and ensure it is on PATH.",
+  "platform": "YouTube_Public",
+  "timestamp": "2026-04-06T07:04:25.818381+00:00",
+  "link_status": "broken",
+  "failure_reason": "yt_dlp_not_installed",
+  "failure_details": "YouTube downloader (yt-dlp) is not installed or not in system PATH. Install it with: pip install yt-dlp"
+}
 ```
 
-Returns the downloaded video file.
-
-### API Documentation
-
-Access interactive API docs at:
-
-- **Swagger UI:** `http://localhost:8000/docs`
-- **ReDoc:** `http://localhost:8000/redoc`
-
 ---
 
-## 🔄 Pipeline Workflow
-
-### Step 1: URL Extraction
-
-- Reads Excel/CSV spreadsheet
-- Identifies URL columns via regex
-- Validates and sanitizes URLs
-- Removes duplicates
-- Extracts metadata (title, category, etc.)
-
-**Input:** Excel file
-**Output:** Structured JSON with URLs and metadata
-
-### Step 2: URL Classification
-
-- Sends URL batch to LLM
-- Classifies platform (YouTube, Google Drive, CDN, etc.)
-- Determines asset type (video, audio, document)
-- Recommends retrieval tool (yt-dlp, gdown, requests)
-
-**Input:** JSON manifest
-**Output:** Classification and tool assignment
-
-### Step 3: Agent Assignment
-
-- Matches agents to tools
-- Loads platform-specific configurations
-- Prepares execution batches
-- Assigns retry strategies
-
-**Input:** Classified records
-**Output:** Agent-assigned task queue
-
-### Step 4: Execution
-
-- Spawns thread pool workers
-- Downloads assets in parallel
-- Implements retry logic on failure
-- Logs each result to JSONL
-- Updates status in real-time
-
-**Input:** Task queue
-**Output:** Downloaded files + JSONL log
-
-### Step 5: Cloud Storage & Reporting
-
-- Uploads files to Google Drive
-- Organizes into hierarchical folders
-- Renames files based on metadata
-- Generates success/failure reports
-- Creates audit trail
-
-**Input:** Downloaded files + metadata
-**Output:** Organized Drive structure + reports
-
----
-
-## 🆘 Troubleshooting
+## Troubleshooting
 
 ### Issue: `yt-dlp executable not found`
 
 **Solution:**
 
 ```bash
-pip install yt-dlp
-# Verify installation
-yt-dlp --version
+pip install yt-dlp --upgrade
+yt-dlp --version  # Verify
 ```
 
-### Issue: `GOOGLE_CREDENTIALS_JSON environment variable not set`
+### Issue: YouTube video not downloading despite being available
 
-**Solution:**
+**Solution:** Check logs for specific error:
 
 ```bash
-# Set environment variable
-export GOOGLE_CREDENTIALS_JSON="/path/to/service_account.json"
-
-# Verify
-echo $GOOGLE_CREDENTIALS_JSON
-```
-
-### Issue: Downloads timeout
-
-**Solution:** Increase timeout in `pipeline/agent_executor.py`:
-
-```python
-TIMEOUT_SECONDS = 600  # Increase from 300 to 600
+cat logs/download_log.jsonl | grep "failure_reason"
 ```
 
 ### Issue: API fails to start on port 8000
 
-**Solution:** Use a different port:
+**Solution:** Use different port:
 
 ```bash
 python api.py --port 8001
 ```
 
-### Issue: File permissions denied on downloads folder
+### Issue: Uploads fail due to file size
 
-**Solution:**
+**Solution:** Default max is 50MB. Increase in `api.py`:
 
-```bash
-# Linux/macOS
-chmod -R 755 downloads/
-
-# Or recreate the folder
-rm -rf downloads && mkdir downloads
+```python
+MAX_FILE_SIZE = 100 * 1024 * 1024  # 100 MB
 ```
 
-### Issue: LLM Classification returning incorrect platforms
+### Issue: Performance slow with many videos
 
-**Solution:** Check `url_classifier.py` for classification rules and update prompts if needed.
+**Solution:** Increase workers in `pipeline/agent_executor.py`:
+
+```python
+MAX_WORKERS = 8  # Increase from 4
+```
+
+### Issue: `ModuleNotFoundError: No module named 'google.oauth2'`
+
+**Solution:** Install Google dependencies:
+
+```bash
+pip install google-auth google-api-python-client
+```
 
 ---
 
 ## 📊 Sample Input Format
 
-### CSV Format
+### CSV Example
 
 ```csv
 Video Link,Title,Category,Campaign
-https://www.youtube.com/watch?v=abc123,Promo Video 1,Commercial,Q1_2026
-https://drive.google.com/file/d/xyz789/view,Product Demo,Tutorial,Q2_2026
-https://example.com/video.mp4,Archived Content,Archive,Backup
+https://www.youtube.com/watch?v=abc123,Brand Promo,Commercial,Q1_2026
+https://www.youtube.com/watch?v=xyz789,Tutorial,Educational,Q2_2026
+https://cdn.example.com/video.mp4,Archived,Archive,Backup
 ```
 
 ### Excel Format
 
-- Column headers: Video Link, Title, Category, Campaign
+- Columns: Video Link, Title, Category, Campaign (flexible)
 - Multiple sheets supported
-- Handles up to 1M+ rows with chunked processing
+- Up to 1,000,000+ rows with chunked processing
 
 ---
 
-## 📈 Output Examples
+## Security
 
-### Success Record (JSONL)
-
-```json
-{
-  "url": "https://www.youtube.com/watch?v=UyefASVrtbw",
-  "status": "success",
-  "platform": "YouTube_Public",
-  "message": "Downloaded -> downloads/youtube_abc123.mp4",
-  "timestamp": "2026-04-06T06:50:38.431883+00:00",
-  "file_path": "downloads/youtube_abc123.mp4",
-  "file_size": 52428800
-}
-```
-
-### Failure Record (JSONL)
-
-```json
-{
-  "url": "https://www.youtube.com/watch?v=broken",
-  "status": "failure",
-  "platform": "YouTube_Public",
-  "message": "Video unavailable or restricted",
-  "timestamp": "2026-04-06T06:50:39.431883+00:00",
-  "link_status": "broken"
-}
-```
+- **Credentials Management:** Store `.env` and service account credentials outside version control
+- **File Upload Restrictions:** Maximum 50MB file size; only `.csv` and `.xlsx` formats accepted
+- **Cross-Origin Resource Sharing:** Configure `allow_origins` in `api.py` for production deployments
+- **Audit Logging:** JSONL logs contain URLs; implement appropriate access controls
 
 ---
 
-## 🔐 Security Considerations
-
-1. **Credential Management**
-   - Never commit `.env` files or service account JSON
-   - Use environment variables for sensitive data
-   - Rotate service account keys regularly
-
-2. **File Upload Restrictions**
-   - Maximum file size: 50 MB (configurable)
-   - Allowed types: `.csv`, `.xlsx` only
-   - Validate file types server-side
-
-3. **CORS Configuration**
-   - Adjust `allow_origins` in `api.py` for production
-   - Restrict to specific domains instead of `["*"]`
-
-4. **Logging**
-   - JSONL logs contain URLs; secure access accordingly
-   - Consider personally identifiable information (PII)
-   - Implement log rotation for large datasets
-
----
-
-## 🧪 Testing
+## Testing
 
 ### Run Unit Tests
 
 ```bash
 pytest tests/
-
-# Run specific test
-pytest tests/test_url_classifier.py
-
-# Run with coverage
-pytest --cov=pipeline tests/
+pytest tests/test_url_classifier.py -v
 ```
 
-### Test Sample Data
-
-A sample input file is provided at `tests/sample_input.csv`:
+### Test with Sample Data
 
 ```bash
 python run.py tests/sample_input.csv
@@ -643,60 +608,55 @@ python run.py tests/sample_input.csv
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
-Contributions are welcome! To contribute:
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/my-feature`
+3. Commit changes: `git commit -m 'Add feature'`
+4. Push: `git push origin feature/my-feature`
+5. Open a Pull Request
 
-1. **Fork** the repository
-2. **Create** a feature branch (`git checkout -b feature/my-feature`)
-3. **Commit** changes (`git commit -m 'Add my feature'`)
-4. **Push** to branch (`git push origin feature/my-feature`)
-5. **Open** a Pull Request
+---
 
-### Developer Guidelines
+## Known Limitations
 
-- Follow PEP 8 style guide
-- Add docstrings to all functions
-- Include unit tests for new features
-- Update documentation accordingly
+1. **Rule-Based Classification Only** – No LLM/AI integration; deterministic and transparent
+2. **Local Storage Only** – Videos are stored locally; cloud synchronization not yet implemented
+3. **Limited Platform Support** – Google Drive, Vimeo, and Direct MP4 agents are placeholder implementations
+4. **No Report Generation** – HTML and XLSX report functionality not yet implemented
+5. **No User Authentication** – API endpoints are unauthenticated; intended for internal use only
+
+---
+
+## Roadmap
+
+Planned enhancements for future releases:
+
+- [ ] Google Drive upload integration and hierarchical folder organization
+- [ ] Vimeo platform download support
+- [ ] Real-time direct MP4/CDN download capability
+- [ ] Automated HTML and XLSX report generation
+- [ ] Database backend for asset tracking and metadata management
+- [ ] API authentication, authorization, and rate limiting
+- [ ] Web-based dashboard for job monitoring and analytics
+
+---
+
+## Support
+
+For technical support and troubleshooting:
+
+- **Review Logs:** Examine `logs/download_log.jsonl` for detailed execution records
+- **Consult Error Reference:** See the Error Handling section for categorized failure types
+- **Report Issues:** Submit GitHub issues with detailed reproduction steps and logs
 
 ---
 
 ## 📝 License
 
-This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
-
----
-
-## 📞 Support & Contact
-
-For issues, questions, or feature requests:
-
-- **Issues:** Open a GitHub issue
-- **Documentation:** See [system_architecture.md](system_architecture.md) and [INTEGRATION_GUIDE.md](INTEGRATION_GUIDE.md)
-- **Email:** [Your contact email]
-
----
-
-## 🙏 Acknowledgments
-
-- **yt-dlp** – Video downloader
-- **FastAPI** – Web framework
-- **Google Drive API** – Cloud storage
-- **pandas** – Data processing
-- **LLM (Claude/GPT)** – Classification intelligence
-
----
-
-## 📅 Version History
-
-| Version | Date       | Changes                            |
-| ------- | ---------- | ---------------------------------- |
-| 1.0.0   | 2026-04-06 | Initial release with core pipeline |
-| 0.9.0   | 2026-03-15 | Beta with web interface            |
-| 0.1.0   | 2026-02-01 | Alpha prototype                    |
+MIT License – See LICENSE file
 
 ---
 
 **Last Updated:** April 6, 2026  
-**Status:** ✅ Production Ready
+**Status:** ✅ Core features production-ready | ⚙️ Cloud features in development
