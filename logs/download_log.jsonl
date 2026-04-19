@@ -374,3 +374,777 @@
   "failure_reason": "http_error",
   "failure_details": "HTTP error during download. Check URL validity and network connection."
 }
+{
+  "url": "https://www.youtube.com/watch?v=UyefASVrtbw",
+  "status": "success",
+  "message": "Downloaded -> downloads/youtube_8b73d049.mp4",
+  "timestamp": "2026-04-19T15:12:47.925867+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "active"
+}
+{
+  "url": "https://www.youtube.com/watch?v=FzaS0V_FCrI",
+  "status": "success",
+  "message": "Downloaded -> downloads/youtube_db5114cb.mp4",
+  "timestamp": "2026-04-19T15:12:48.069705+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "active"
+}
+{
+  "url": "https://www.youtube.com/watch?v=dI4el0eShso",
+  "status": "success",
+  "message": "Downloaded -> downloads/youtube_62cb0483.mp4",
+  "timestamp": "2026-04-19T15:12:48.092743+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "active"
+}
+{
+  "url": "https://www.youtube.com/watch?v=G3opROecuBI",
+  "status": "success",
+  "message": "Downloaded -> downloads/youtube_7dec1201.mp4",
+  "timestamp": "2026-04-19T15:12:48.182407+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "active"
+}
+{
+  "url": "https://www.youtube.com/watch?v=LUJYAcYJ77o",
+  "status": "success",
+  "message": "Downloaded -> downloads/youtube_0ea9bbfa.mp4",
+  "timestamp": "2026-04-19T15:12:52.233025+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "active"
+}
+{
+  "url": "https://www.youtube.com/watch?v=FzaS0V_FCrI",
+  "status": "success",
+  "message": "Downloaded -> downloads/youtube_db5114cb.mp4",
+  "timestamp": "2026-04-19T15:20:05.147349+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "active"
+}
+{
+  "url": "https://www.youtube.com/watch?v=dI4el0eShso",
+  "status": "success",
+  "message": "Downloaded -> downloads/youtube_62cb0483.mp4",
+  "timestamp": "2026-04-19T15:20:05.239945+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "active"
+}
+{
+  "url": "https://www.youtube.com/watch?v=G3opROecuBI",
+  "status": "success",
+  "message": "Downloaded -> downloads/youtube_7dec1201.mp4",
+  "timestamp": "2026-04-19T15:20:05.974794+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "active"
+}
+{
+  "url": "https://www.youtube.com/watch?v=UyefASVrtbw",
+  "status": "success",
+  "message": "Downloaded -> downloads/youtube_8b73d049.mp4",
+  "timestamp": "2026-04-19T15:20:08.192879+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "active"
+}
+{
+  "url": "https://www.youtube.com/watch?v=LUJYAcYJ77o",
+  "status": "success",
+  "message": "Downloaded -> downloads/youtube_0ea9bbfa.mp4",
+  "timestamp": "2026-04-19T15:20:09.929959+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "active"
+}
+{
+  "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+  "status": "success",
+  "message": "Downloaded -> downloads/youtube_df2c6f7a.mp4",
+  "timestamp": "2026-04-19T15:28:42.011896+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "active"
+}
+{
+  "url": "https://www.youtube.com/watch?v=J---aiyznGQ",
+  "status": "success",
+  "message": "Downloaded -> downloads/youtube_a1c1e408.mp4",
+  "timestamp": "2026-04-19T15:28:45.539073+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "active"
+}
+{
+  "url": "https://www.youtube.com/watch?v=9bZkp7q19f0",
+  "status": "success",
+  "message": "Downloaded -> downloads/youtube_5b170677.mp4",
+  "timestamp": "2026-04-19T15:28:50.602502+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "active"
+}
+{
+  "url": "https://www.youtube.com/watch?v=dTAAsCNK7RA",
+  "status": "success",
+  "message": "Downloaded -> downloads/youtube_74d32e73.mp4",
+  "timestamp": "2026-04-19T15:28:51.873671+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "active"
+}
+{
+  "url": "https://www.youtube.com/watch?v=a1Y73sPHKxw",
+  "status": "failure",
+  "message": "yt-dlp failed: 1 - [youtube] Extracting URL: https://www.youtube.com/watch?v=a1Y73sPHKxw\n[youtube] a1Y73sPHKxw: Downloading webpage\n[youtube] a1Y73sPHKxw: Downloading android vr player API JSON\nERROR: [youtube] a1Y73sPHKxw: This video has been removed for violating YouTube's Community Guidelines",
+  "timestamp": "2026-04-19T15:28:52.761666+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "broken",
+  "failure_reason": "video_removed_guidelines",
+  "failure_details": "Video has been removed by YouTube for violating Community Guidelines. Content is no longer available."
+}
+{
+  "url": "https://www.youtube.com/watch?v=_OBlgSz8sSM",
+  "status": "failure",
+  "message": "yt-dlp failed: 1 - [youtube] Extracting URL: https://www.youtube.com/watch?v=_OBlgSz8sSM\n[youtube] _OBlgSz8sSM: Downloading webpage\n[youtube] _OBlgSz8sSM: Downloading android vr player API JSON\nERROR: [youtube] _OBlgSz8sSM: This video is not available",
+  "timestamp": "2026-04-19T15:28:55.166968+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "broken",
+  "failure_reason": "video_unavailable",
+  "failure_details": "Video is no longer available. It may have been deleted or removed by the uploader."
+}
+{
+  "url": "https://www.youtube.com/watch?v=ElJ0fiD0lkc",
+  "status": "success",
+  "message": "Downloaded -> downloads/youtube_2b80e069.mp4",
+  "timestamp": "2026-04-19T15:28:55.607569+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "active"
+}
+{
+  "url": "https://www.youtube.com/watch?v=arj7oStGLkU",
+  "status": "success",
+  "message": "Downloaded -> downloads/youtube_79ac9c1b.mp4",
+  "timestamp": "2026-04-19T15:28:57.824987+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "active"
+}
+{
+  "url": "https://www.youtube.com/watch?v=5Rmv3nliwCs",
+  "status": "success",
+  "message": "Downloaded -> downloads/youtube_5c6fe832.mp4",
+  "timestamp": "2026-04-19T15:29:02.735061+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "active"
+}
+{
+  "url": "https://www.youtube.com/watch?v=0vZ9gVy6nA8",
+  "status": "failure",
+  "message": "yt-dlp failed: 1 - [youtube] Extracting URL: https://www.youtube.com/watch?v=0vZ9gVy6nA8\n[youtube] 0vZ9gVy6nA8: Downloading webpage\n[youtube] 0vZ9gVy6nA8: Downloading android vr player API JSON\nERROR: [youtube] 0vZ9gVy6nA8: Video unavailable",
+  "timestamp": "2026-04-19T15:29:04.303643+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "broken",
+  "failure_reason": "http_error",
+  "failure_details": "HTTP error during download. Check URL validity and network connection."
+}
+{
+  "url": "https://www.youtube.com/watch?v=2oJqkZb1QbQ",
+  "status": "failure",
+  "message": "yt-dlp failed: 1 - [youtube] Extracting URL: https://www.youtube.com/watch?v=2oJqkZb1QbQ\n[youtube] 2oJqkZb1QbQ: Downloading webpage\n[youtube] 2oJqkZb1QbQ: Downloading android vr player API JSON\nERROR: [youtube] 2oJqkZb1QbQ: Video unavailable",
+  "timestamp": "2026-04-19T15:29:06.967172+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "broken",
+  "failure_reason": "http_error",
+  "failure_details": "HTTP error during download. Check URL validity and network connection."
+}
+{
+  "url": "https://www.youtube.com/watch?v=JZkN3n2bHhU",
+  "status": "failure",
+  "message": "yt-dlp failed: 1 - [youtube] Extracting URL: https://www.youtube.com/watch?v=JZkN3n2bHhU\n[youtube] JZkN3n2bHhU: Downloading webpage\n[youtube] JZkN3n2bHhU: Downloading android vr player API JSON\nERROR: [youtube] JZkN3n2bHhU: Video unavailable",
+  "timestamp": "2026-04-19T15:29:07.330641+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "broken",
+  "failure_reason": "http_error",
+  "failure_details": "HTTP error during download. Check URL validity and network connection."
+}
+{
+  "url": "https://www.youtube.com/watch?v=c8aFcHFu8QM",
+  "status": "success",
+  "message": "Downloaded -> downloads/youtube_d6aa43df.mp4",
+  "timestamp": "2026-04-19T15:29:11.185235+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "active"
+}
+{
+  "url": "https://www.youtube.com/watch?v=9r8j6z9n3lE",
+  "status": "failure",
+  "message": "yt-dlp failed: 1 - [youtube] Extracting URL: https://www.youtube.com/watch?v=9r8j6z9n3lE\n[youtube] 9r8j6z9n3lE: Downloading webpage\n[youtube] 9r8j6z9n3lE: Downloading android vr player API JSON\nERROR: [youtube] 9r8j6z9n3lE: Video unavailable",
+  "timestamp": "2026-04-19T15:29:13.601828+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "broken",
+  "failure_reason": "http_error",
+  "failure_details": "HTTP error during download. Check URL validity and network connection."
+}
+{
+  "url": "https://www.youtube.com/watch?v=V2yY9bR6qY0",
+  "status": "failure",
+  "message": "yt-dlp failed: 1 - [youtube] Extracting URL: https://www.youtube.com/watch?v=V2yY9bR6qY0\n[youtube] V2yY9bR6qY0: Downloading webpage\n[youtube] V2yY9bR6qY0: Downloading android vr player API JSON\nERROR: [youtube] V2yY9bR6qY0: Video unavailable",
+  "timestamp": "2026-04-19T15:29:15.776917+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "broken",
+  "failure_reason": "http_error",
+  "failure_details": "HTTP error during download. Check URL validity and network connection."
+}
+{
+  "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+  "status": "success",
+  "message": "Downloaded -> downloads/youtube_df2c6f7a.mp4",
+  "timestamp": "2026-04-19T16:43:50.783543+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "active"
+}
+{
+  "url": "https://www.youtube.com/watch?v=J---aiyznGQ",
+  "status": "success",
+  "message": "Downloaded -> downloads/youtube_a1c1e408.mp4",
+  "timestamp": "2026-04-19T16:43:50.973545+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "active"
+}
+{
+  "url": "https://www.youtube.com/watch?v=9bZkp7q19f0",
+  "status": "success",
+  "message": "Downloaded -> downloads/youtube_5b170677.mp4",
+  "timestamp": "2026-04-19T16:44:03.244939+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "active"
+}
+{
+  "url": "https://www.youtube.com/watch?v=dTAAsCNK7RA",
+  "status": "success",
+  "message": "Downloaded -> downloads/youtube_74d32e73.mp4",
+  "timestamp": "2026-04-19T16:44:03.246289+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "active"
+}
+{
+  "url": "https://www.youtube.com/watch?v=a1Y73sPHKxw",
+  "status": "failure",
+  "message": "yt-dlp failed: 1 - [youtube] Extracting URL: https://www.youtube.com/watch?v=a1Y73sPHKxw\n[youtube] a1Y73sPHKxw: Downloading webpage\n[youtube] a1Y73sPHKxw: Downloading android vr player API JSON\nERROR: [youtube] a1Y73sPHKxw: This video has been removed for violating YouTube's Community Guidelines",
+  "timestamp": "2026-04-19T16:44:03.448361+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "broken",
+  "failure_reason": "video_removed_guidelines",
+  "failure_details": "Video has been removed by YouTube for violating Community Guidelines. Content is no longer available."
+}
+{
+  "url": "https://www.youtube.com/watch?v=_OBlgSz8sSM",
+  "status": "failure",
+  "message": "yt-dlp failed: 1 - [youtube] Extracting URL: https://www.youtube.com/watch?v=_OBlgSz8sSM\n[youtube] _OBlgSz8sSM: Downloading webpage\n[youtube] _OBlgSz8sSM: Downloading android vr player API JSON\nERROR: [youtube] _OBlgSz8sSM: This video is not available",
+  "timestamp": "2026-04-19T16:44:03.458882+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "broken",
+  "failure_reason": "video_unavailable",
+  "failure_details": "Video is no longer available. It may have been deleted or removed by the uploader."
+}
+{
+  "url": "https://www.youtube.com/watch?v=arj7oStGLkU",
+  "status": "success",
+  "message": "Downloaded -> downloads/youtube_79ac9c1b.mp4",
+  "timestamp": "2026-04-19T16:44:11.054304+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "active"
+}
+{
+  "url": "https://www.youtube.com/watch?v=ElJ0fiD0lkc",
+  "status": "success",
+  "message": "Downloaded -> downloads/youtube_2b80e069.mp4",
+  "timestamp": "2026-04-19T16:44:11.208472+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "active"
+}
+{
+  "url": "https://www.youtube.com/watch?v=5Rmv3nliwCs",
+  "status": "success",
+  "message": "Downloaded -> downloads/youtube_5c6fe832.mp4",
+  "timestamp": "2026-04-19T16:44:16.292517+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "active"
+}
+{
+  "url": "https://www.youtube.com/watch?v=2oJqkZb1QbQ",
+  "status": "failure",
+  "message": "yt-dlp failed: 1 - [youtube] Extracting URL: https://www.youtube.com/watch?v=2oJqkZb1QbQ\n[youtube] 2oJqkZb1QbQ: Downloading webpage\n[youtube] 2oJqkZb1QbQ: Downloading android vr player API JSON\nERROR: [youtube] 2oJqkZb1QbQ: Video unavailable",
+  "timestamp": "2026-04-19T16:44:19.407252+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "broken",
+  "failure_reason": "http_error",
+  "failure_details": "HTTP error during download. Check URL validity and network connection."
+}
+{
+  "url": "https://www.youtube.com/watch?v=0vZ9gVy6nA8",
+  "status": "failure",
+  "message": "yt-dlp failed: 1 - [youtube] Extracting URL: https://www.youtube.com/watch?v=0vZ9gVy6nA8\n[youtube] 0vZ9gVy6nA8: Downloading webpage\n[youtube] 0vZ9gVy6nA8: Downloading android vr player API JSON\nERROR: [youtube] 0vZ9gVy6nA8: Video unavailable",
+  "timestamp": "2026-04-19T16:44:20.632399+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "broken",
+  "failure_reason": "http_error",
+  "failure_details": "HTTP error during download. Check URL validity and network connection."
+}
+{
+  "url": "https://www.youtube.com/watch?v=JZkN3n2bHhU",
+  "status": "failure",
+  "message": "yt-dlp failed: 1 - [youtube] Extracting URL: https://www.youtube.com/watch?v=JZkN3n2bHhU\n[youtube] JZkN3n2bHhU: Downloading webpage\n[youtube] JZkN3n2bHhU: Downloading android vr player API JSON\nERROR: [youtube] JZkN3n2bHhU: Video unavailable",
+  "timestamp": "2026-04-19T16:44:54.948823+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "broken",
+  "failure_reason": "http_error",
+  "failure_details": "HTTP error during download. Check URL validity and network connection."
+}
+{
+  "url": "https://www.youtube.com/watch?v=c8aFcHFu8QM",
+  "status": "success",
+  "message": "Downloaded -> downloads/youtube_d6aa43df.mp4",
+  "timestamp": "2026-04-19T16:44:55.336195+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "active"
+}
+{
+  "url": "https://www.youtube.com/watch?v=9r8j6z9n3lE",
+  "status": "failure",
+  "message": "yt-dlp failed: 1 - [youtube] Extracting URL: https://www.youtube.com/watch?v=9r8j6z9n3lE\n[youtube] 9r8j6z9n3lE: Downloading webpage\n[youtube] 9r8j6z9n3lE: Downloading android vr player API JSON\nERROR: [youtube] 9r8j6z9n3lE: Video unavailable",
+  "timestamp": "2026-04-19T16:44:58.856697+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "broken",
+  "failure_reason": "http_error",
+  "failure_details": "HTTP error during download. Check URL validity and network connection."
+}
+{
+  "url": "https://www.youtube.com/watch?v=V2yY9bR6qY0",
+  "status": "failure",
+  "message": "yt-dlp failed: 1 - [youtube] Extracting URL: https://www.youtube.com/watch?v=V2yY9bR6qY0\n[youtube] V2yY9bR6qY0: Downloading webpage\n[youtube] V2yY9bR6qY0: Downloading android vr player API JSON\nERROR: [youtube] V2yY9bR6qY0: Video unavailable",
+  "timestamp": "2026-04-19T16:45:02.154048+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "broken",
+  "failure_reason": "http_error",
+  "failure_details": "HTTP error during download. Check URL validity and network connection."
+}
+{
+  "url": "https://www.youtube.com/watch?v=J---aiyznGQ",
+  "status": "success",
+  "message": "Downloaded -> downloads/youtube_a1c1e408.mp4",
+  "timestamp": "2026-04-19T17:08:59.973315+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "active"
+}
+{
+  "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+  "status": "success",
+  "message": "Downloaded -> downloads/youtube_df2c6f7a.mp4",
+  "timestamp": "2026-04-19T17:09:00.136678+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "active"
+}
+{
+  "url": "https://www.youtube.com/watch?v=dTAAsCNK7RA",
+  "status": "success",
+  "message": "Downloaded -> downloads/youtube_74d32e73.mp4",
+  "timestamp": "2026-04-19T17:09:06.858924+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "active"
+}
+{
+  "url": "https://www.youtube.com/watch?v=9bZkp7q19f0",
+  "status": "success",
+  "message": "Downloaded -> downloads/youtube_5b170677.mp4",
+  "timestamp": "2026-04-19T17:09:06.867584+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "active"
+}
+{
+  "url": "https://www.youtube.com/watch?v=_OBlgSz8sSM",
+  "status": "failure",
+  "message": "yt-dlp failed: 1 - [youtube] Extracting URL: https://www.youtube.com/watch?v=_OBlgSz8sSM\n[youtube] _OBlgSz8sSM: Downloading webpage\n[youtube] _OBlgSz8sSM: Downloading android vr player API JSON\nERROR: [youtube] _OBlgSz8sSM: This video is not available",
+  "timestamp": "2026-04-19T17:09:13.229301+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "broken",
+  "failure_reason": "video_unavailable",
+  "failure_details": "Video is no longer available. It may have been deleted or removed by the uploader."
+}
+{
+  "url": "https://www.youtube.com/watch?v=a1Y73sPHKxw",
+  "status": "failure",
+  "message": "yt-dlp failed: 1 - [youtube] Extracting URL: https://www.youtube.com/watch?v=a1Y73sPHKxw\n[youtube] a1Y73sPHKxw: Downloading webpage\n[youtube] a1Y73sPHKxw: Downloading android vr player API JSON\nERROR: [youtube] a1Y73sPHKxw: This video has been removed for violating YouTube's Community Guidelines",
+  "timestamp": "2026-04-19T17:09:13.337890+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "broken",
+  "failure_reason": "video_removed_guidelines",
+  "failure_details": "Video has been removed by YouTube for violating Community Guidelines. Content is no longer available."
+}
+{
+  "url": "https://www.youtube.com/watch?v=ElJ0fiD0lkc",
+  "status": "success",
+  "message": "Downloaded -> downloads/youtube_2b80e069.mp4",
+  "timestamp": "2026-04-19T17:09:14.646641+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "active"
+}
+{
+  "url": "https://www.youtube.com/watch?v=arj7oStGLkU",
+  "status": "success",
+  "message": "Downloaded -> downloads/youtube_79ac9c1b.mp4",
+  "timestamp": "2026-04-19T17:09:18.622977+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "active"
+}
+{
+  "url": "https://www.youtube.com/watch?v=0vZ9gVy6nA8",
+  "status": "failure",
+  "message": "yt-dlp failed: 1 - [youtube] Extracting URL: https://www.youtube.com/watch?v=0vZ9gVy6nA8\n[youtube] 0vZ9gVy6nA8: Downloading webpage\n[youtube] 0vZ9gVy6nA8: Downloading android vr player API JSON\nERROR: [youtube] 0vZ9gVy6nA8: Video unavailable",
+  "timestamp": "2026-04-19T17:09:21.806302+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "broken",
+  "failure_reason": "http_error",
+  "failure_details": "HTTP error during download. Check URL validity and network connection."
+}
+{
+  "url": "https://www.youtube.com/watch?v=5Rmv3nliwCs",
+  "status": "success",
+  "message": "Downloaded -> downloads/youtube_5c6fe832.mp4",
+  "timestamp": "2026-04-19T17:09:24.220391+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "active"
+}
+{
+  "url": "https://www.youtube.com/watch?v=2oJqkZb1QbQ",
+  "status": "failure",
+  "message": "yt-dlp failed: 1 - [youtube] Extracting URL: https://www.youtube.com/watch?v=2oJqkZb1QbQ\n[youtube] 2oJqkZb1QbQ: Downloading webpage\n[youtube] 2oJqkZb1QbQ: Downloading android vr player API JSON\nERROR: [youtube] 2oJqkZb1QbQ: Video unavailable",
+  "timestamp": "2026-04-19T17:09:25.171134+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "broken",
+  "failure_reason": "http_error",
+  "failure_details": "HTTP error during download. Check URL validity and network connection."
+}
+{
+  "url": "https://www.youtube.com/watch?v=JZkN3n2bHhU",
+  "status": "failure",
+  "message": "yt-dlp failed: 1 - [youtube] Extracting URL: https://www.youtube.com/watch?v=JZkN3n2bHhU\n[youtube] JZkN3n2bHhU: Downloading webpage\n[youtube] JZkN3n2bHhU: Downloading android vr player API JSON\nERROR: [youtube] JZkN3n2bHhU: Video unavailable",
+  "timestamp": "2026-04-19T17:09:26.331536+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "broken",
+  "failure_reason": "http_error",
+  "failure_details": "HTTP error during download. Check URL validity and network connection."
+}
+{
+  "url": "https://www.youtube.com/watch?v=c8aFcHFu8QM",
+  "status": "success",
+  "message": "Downloaded -> downloads/youtube_d6aa43df.mp4",
+  "timestamp": "2026-04-19T17:09:29.860535+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "active"
+}
+{
+  "url": "https://www.youtube.com/watch?v=9r8j6z9n3lE",
+  "status": "failure",
+  "message": "yt-dlp failed: 1 - [youtube] Extracting URL: https://www.youtube.com/watch?v=9r8j6z9n3lE\n[youtube] 9r8j6z9n3lE: Downloading webpage\n[youtube] 9r8j6z9n3lE: Downloading android vr player API JSON\nERROR: [youtube] 9r8j6z9n3lE: Video unavailable",
+  "timestamp": "2026-04-19T17:09:32.112506+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "broken",
+  "failure_reason": "http_error",
+  "failure_details": "HTTP error during download. Check URL validity and network connection."
+}
+{
+  "url": "https://www.youtube.com/watch?v=V2yY9bR6qY0",
+  "status": "failure",
+  "message": "yt-dlp failed: 1 - [youtube] Extracting URL: https://www.youtube.com/watch?v=V2yY9bR6qY0\n[youtube] V2yY9bR6qY0: Downloading webpage\n[youtube] V2yY9bR6qY0: Downloading android vr player API JSON\nERROR: [youtube] V2yY9bR6qY0: Video unavailable",
+  "timestamp": "2026-04-19T17:09:34.454581+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "broken",
+  "failure_reason": "http_error",
+  "failure_details": "HTTP error during download. Check URL validity and network connection."
+}
+{
+  "url": "https://www.youtube.com/watch?v=J---aiyznGQ",
+  "status": "success",
+  "message": "Downloaded -> downloads/youtube_a1c1e408.mp4",
+  "timestamp": "2026-04-19T17:11:29.539827+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "active"
+}
+{
+  "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+  "status": "success",
+  "message": "Downloaded -> downloads/youtube_df2c6f7a.mp4",
+  "timestamp": "2026-04-19T17:11:29.769525+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "active"
+}
+{
+  "url": "https://www.youtube.com/watch?v=9bZkp7q19f0",
+  "status": "success",
+  "message": "Downloaded -> downloads/youtube_5b170677.mp4",
+  "timestamp": "2026-04-19T17:11:34.211224+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "active"
+}
+{
+  "url": "https://www.youtube.com/watch?v=dTAAsCNK7RA",
+  "status": "success",
+  "message": "Downloaded -> downloads/youtube_74d32e73.mp4",
+  "timestamp": "2026-04-19T17:11:34.331582+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "active"
+}
+{
+  "url": "https://www.youtube.com/watch?v=a1Y73sPHKxw",
+  "status": "failure",
+  "message": "yt-dlp failed: 1 - [youtube] Extracting URL: https://www.youtube.com/watch?v=a1Y73sPHKxw\n[youtube] a1Y73sPHKxw: Downloading webpage\n[youtube] a1Y73sPHKxw: Downloading android vr player API JSON\nERROR: [youtube] a1Y73sPHKxw: This video has been removed for violating YouTube's Community Guidelines",
+  "timestamp": "2026-04-19T17:11:35.721140+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "broken",
+  "failure_reason": "video_removed_guidelines",
+  "failure_details": "Video has been removed by YouTube for violating Community Guidelines. Content is no longer available."
+}
+{
+  "url": "https://www.youtube.com/watch?v=_OBlgSz8sSM",
+  "status": "failure",
+  "message": "yt-dlp failed: 1 - [youtube] Extracting URL: https://www.youtube.com/watch?v=_OBlgSz8sSM\n[youtube] _OBlgSz8sSM: Downloading webpage\n[youtube] _OBlgSz8sSM: Downloading android vr player API JSON\nERROR: [youtube] _OBlgSz8sSM: This video is not available",
+  "timestamp": "2026-04-19T17:11:38.719349+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "broken",
+  "failure_reason": "video_unavailable",
+  "failure_details": "Video is no longer available. It may have been deleted or removed by the uploader."
+}
+{
+  "url": "https://www.youtube.com/watch?v=arj7oStGLkU",
+  "status": "success",
+  "message": "Downloaded -> downloads/youtube_79ac9c1b.mp4",
+  "timestamp": "2026-04-19T17:11:39.380871+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "active"
+}
+{
+  "url": "https://www.youtube.com/watch?v=ElJ0fiD0lkc",
+  "status": "success",
+  "message": "Downloaded -> downloads/youtube_2b80e069.mp4",
+  "timestamp": "2026-04-19T17:11:39.981510+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "active"
+}
+{
+  "url": "https://www.youtube.com/watch?v=5Rmv3nliwCs",
+  "status": "success",
+  "message": "Downloaded -> downloads/youtube_5c6fe832.mp4",
+  "timestamp": "2026-04-19T17:11:45.297829+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "active"
+}
+{
+  "url": "https://www.youtube.com/watch?v=0vZ9gVy6nA8",
+  "status": "failure",
+  "message": "yt-dlp failed: 1 - [youtube] Extracting URL: https://www.youtube.com/watch?v=0vZ9gVy6nA8\n[youtube] 0vZ9gVy6nA8: Downloading webpage\n[youtube] 0vZ9gVy6nA8: Downloading android vr player API JSON\nERROR: [youtube] 0vZ9gVy6nA8: Video unavailable",
+  "timestamp": "2026-04-19T17:11:46.030202+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "broken",
+  "failure_reason": "http_error",
+  "failure_details": "HTTP error during download. Check URL validity and network connection."
+}
+{
+  "url": "https://www.youtube.com/watch?v=2oJqkZb1QbQ",
+  "status": "failure",
+  "message": "yt-dlp failed: 1 - [youtube] Extracting URL: https://www.youtube.com/watch?v=2oJqkZb1QbQ\n[youtube] 2oJqkZb1QbQ: Downloading webpage\n[youtube] 2oJqkZb1QbQ: Downloading android vr player API JSON\nERROR: [youtube] 2oJqkZb1QbQ: Video unavailable",
+  "timestamp": "2026-04-19T17:11:50.890233+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "broken",
+  "failure_reason": "http_error",
+  "failure_details": "HTTP error during download. Check URL validity and network connection."
+}
+{
+  "url": "https://www.youtube.com/watch?v=JZkN3n2bHhU",
+  "status": "failure",
+  "message": "yt-dlp failed: 1 - [youtube] Extracting URL: https://www.youtube.com/watch?v=JZkN3n2bHhU\n[youtube] JZkN3n2bHhU: Downloading webpage\n[youtube] JZkN3n2bHhU: Downloading android vr player API JSON\nERROR: [youtube] JZkN3n2bHhU: Video unavailable",
+  "timestamp": "2026-04-19T17:11:53.399468+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "broken",
+  "failure_reason": "http_error",
+  "failure_details": "HTTP error during download. Check URL validity and network connection."
+}
+{
+  "url": "https://www.youtube.com/watch?v=c8aFcHFu8QM",
+  "status": "success",
+  "message": "Downloaded -> downloads/youtube_d6aa43df.mp4",
+  "timestamp": "2026-04-19T17:11:55.107383+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "active"
+}
+{
+  "url": "https://www.youtube.com/watch?v=9r8j6z9n3lE",
+  "status": "failure",
+  "message": "yt-dlp failed: 1 - [youtube] Extracting URL: https://www.youtube.com/watch?v=9r8j6z9n3lE\n[youtube] 9r8j6z9n3lE: Downloading webpage\n[youtube] 9r8j6z9n3lE: Downloading android vr player API JSON\nERROR: [youtube] 9r8j6z9n3lE: Video unavailable",
+  "timestamp": "2026-04-19T17:11:56.011298+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "broken",
+  "failure_reason": "http_error",
+  "failure_details": "HTTP error during download. Check URL validity and network connection."
+}
+{
+  "url": "https://www.youtube.com/watch?v=V2yY9bR6qY0",
+  "status": "failure",
+  "message": "yt-dlp failed: 1 - [youtube] Extracting URL: https://www.youtube.com/watch?v=V2yY9bR6qY0\n[youtube] V2yY9bR6qY0: Downloading webpage\n[youtube] V2yY9bR6qY0: Downloading android vr player API JSON\nERROR: [youtube] V2yY9bR6qY0: Video unavailable",
+  "timestamp": "2026-04-19T17:11:56.889603+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "broken",
+  "failure_reason": "http_error",
+  "failure_details": "HTTP error during download. Check URL validity and network connection."
+}
+{
+  "url": "https://www.youtube.com/watch?v=J---aiyznGQ",
+  "status": "success",
+  "message": "Downloaded -> downloads/youtube_a1c1e408.mp4",
+  "timestamp": "2026-04-19T17:13:31.813977+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "active"
+}
+{
+  "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+  "status": "success",
+  "message": "Downloaded -> downloads/youtube_df2c6f7a.mp4",
+  "timestamp": "2026-04-19T17:13:32.045714+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "active"
+}
+{
+  "url": "https://www.youtube.com/watch?v=dTAAsCNK7RA",
+  "status": "success",
+  "message": "Downloaded -> downloads/youtube_74d32e73.mp4",
+  "timestamp": "2026-04-19T17:13:36.579659+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "active"
+}
+{
+  "url": "https://www.youtube.com/watch?v=9bZkp7q19f0",
+  "status": "success",
+  "message": "Downloaded -> downloads/youtube_5b170677.mp4",
+  "timestamp": "2026-04-19T17:13:36.790765+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "active"
+}
+{
+  "url": "https://www.youtube.com/watch?v=a1Y73sPHKxw",
+  "status": "failure",
+  "message": "yt-dlp failed: 1 - [youtube] Extracting URL: https://www.youtube.com/watch?v=a1Y73sPHKxw\n[youtube] a1Y73sPHKxw: Downloading webpage\n[youtube] a1Y73sPHKxw: Downloading android vr player API JSON\nERROR: [youtube] a1Y73sPHKxw: This video has been removed for violating YouTube's Community Guidelines",
+  "timestamp": "2026-04-19T17:13:39.367667+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "broken",
+  "failure_reason": "video_removed_guidelines",
+  "failure_details": "Video has been removed by YouTube for violating Community Guidelines. Content is no longer available."
+}
+{
+  "url": "https://www.youtube.com/watch?v=_OBlgSz8sSM",
+  "status": "failure",
+  "message": "yt-dlp failed: 1 - [youtube] Extracting URL: https://www.youtube.com/watch?v=_OBlgSz8sSM\n[youtube] _OBlgSz8sSM: Downloading webpage\n[youtube] _OBlgSz8sSM: Downloading android vr player API JSON\nERROR: [youtube] _OBlgSz8sSM: This video is not available",
+  "timestamp": "2026-04-19T17:13:40.454127+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "broken",
+  "failure_reason": "video_unavailable",
+  "failure_details": "Video is no longer available. It may have been deleted or removed by the uploader."
+}
+{
+  "url": "https://www.youtube.com/watch?v=ElJ0fiD0lkc",
+  "status": "success",
+  "message": "Downloaded -> downloads/youtube_2b80e069.mp4",
+  "timestamp": "2026-04-19T17:13:40.617964+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "active"
+}
+{
+  "url": "https://www.youtube.com/watch?v=arj7oStGLkU",
+  "status": "success",
+  "message": "Downloaded -> downloads/youtube_79ac9c1b.mp4",
+  "timestamp": "2026-04-19T17:13:43.451181+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "active"
+}
+{
+  "url": "https://www.youtube.com/watch?v=5Rmv3nliwCs",
+  "status": "success",
+  "message": "Downloaded -> downloads/youtube_5c6fe832.mp4",
+  "timestamp": "2026-04-19T17:13:47.166935+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "active"
+}
+{
+  "url": "https://www.youtube.com/watch?v=0vZ9gVy6nA8",
+  "status": "failure",
+  "message": "yt-dlp failed: 1 - [youtube] Extracting URL: https://www.youtube.com/watch?v=0vZ9gVy6nA8\n[youtube] 0vZ9gVy6nA8: Downloading webpage\n[youtube] 0vZ9gVy6nA8: Downloading android vr player API JSON\nERROR: [youtube] 0vZ9gVy6nA8: Video unavailable",
+  "timestamp": "2026-04-19T17:13:47.615213+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "broken",
+  "failure_reason": "http_error",
+  "failure_details": "HTTP error during download. Check URL validity and network connection."
+}
+{
+  "url": "https://www.youtube.com/watch?v=2oJqkZb1QbQ",
+  "status": "failure",
+  "message": "yt-dlp failed: 1 - [youtube] Extracting URL: https://www.youtube.com/watch?v=2oJqkZb1QbQ\n[youtube] 2oJqkZb1QbQ: Downloading webpage\n[youtube] 2oJqkZb1QbQ: Downloading android vr player API JSON\nERROR: [youtube] 2oJqkZb1QbQ: Video unavailable",
+  "timestamp": "2026-04-19T17:13:51.146155+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "broken",
+  "failure_reason": "http_error",
+  "failure_details": "HTTP error during download. Check URL validity and network connection."
+}
+{
+  "url": "https://www.youtube.com/watch?v=JZkN3n2bHhU",
+  "status": "failure",
+  "message": "yt-dlp failed: 1 - [youtube] Extracting URL: https://www.youtube.com/watch?v=JZkN3n2bHhU\n[youtube] JZkN3n2bHhU: Downloading webpage\n[youtube] JZkN3n2bHhU: Downloading android vr player API JSON\nERROR: [youtube] JZkN3n2bHhU: Video unavailable",
+  "timestamp": "2026-04-19T17:13:51.277224+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "broken",
+  "failure_reason": "http_error",
+  "failure_details": "HTTP error during download. Check URL validity and network connection."
+}
+{
+  "url": "https://www.youtube.com/watch?v=c8aFcHFu8QM",
+  "status": "success",
+  "message": "Downloaded -> downloads/youtube_d6aa43df.mp4",
+  "timestamp": "2026-04-19T17:13:55.622696+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "active"
+}
+{
+  "url": "https://www.youtube.com/watch?v=9r8j6z9n3lE",
+  "status": "failure",
+  "message": "yt-dlp failed: 1 - [youtube] Extracting URL: https://www.youtube.com/watch?v=9r8j6z9n3lE\n[youtube] 9r8j6z9n3lE: Downloading webpage\n[youtube] 9r8j6z9n3lE: Downloading android vr player API JSON\nERROR: [youtube] 9r8j6z9n3lE: Video unavailable",
+  "timestamp": "2026-04-19T17:13:57.825857+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "broken",
+  "failure_reason": "http_error",
+  "failure_details": "HTTP error during download. Check URL validity and network connection."
+}
+{
+  "url": "https://www.youtube.com/watch?v=V2yY9bR6qY0",
+  "status": "failure",
+  "message": "yt-dlp failed: 1 - [youtube] Extracting URL: https://www.youtube.com/watch?v=V2yY9bR6qY0\n[youtube] V2yY9bR6qY0: Downloading webpage\n[youtube] V2yY9bR6qY0: Downloading android vr player API JSON\nERROR: [youtube] V2yY9bR6qY0: Video unavailable",
+  "timestamp": "2026-04-19T17:13:59.689891+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "broken",
+  "failure_reason": "http_error",
+  "failure_details": "HTTP error during download. Check URL validity and network connection."
+}
+{
+  "url": "https://www.youtube.com/watch?v=dI4el0eShso",
+  "status": "success",
+  "message": "Downloaded -> downloads/youtube_62cb0483.mp4",
+  "timestamp": "2026-04-19T17:17:08.298036+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "active"
+}
+{
+  "url": "https://www.youtube.com/watch?v=G3opROecuBI",
+  "status": "success",
+  "message": "Downloaded -> downloads/youtube_7dec1201.mp4",
+  "timestamp": "2026-04-19T17:17:08.382236+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "active"
+}
+{
+  "url": "https://www.youtube.com/watch?v=LUJYAcYJ77o",
+  "status": "success",
+  "message": "Downloaded -> downloads/youtube_0ea9bbfa.mp4",
+  "timestamp": "2026-04-19T17:17:12.200280+00:00",
+  "platform": "YouTube_Public",
+  "link_status": "active"
+}

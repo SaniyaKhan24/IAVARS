@@ -13,13 +13,14 @@ from __future__ import annotations
 
 import json
 import logging
+import os
 from pathlib import Path
 from typing import Any
 
 from pipeline.url_extractor import extract_urls
-from pipeline.url_classifier import classify_urls
-from pipeline.agent_assigner import assign_agents
+from pipeline.intelligent_router import route_urls
 from pipeline.agent_executor import execute_all
+from pipeline.storage import upload_records_to_drive
 
 logger = logging.getLogger(__name__)
 
@@ -53,14 +54,19 @@ def run_pipeline(csv_path: str | Path, *,
         logger.warning("No URLs found. Pipeline finished with 0 records.")
         return [], {"total": 0, "success": 0, "failure": 0}
 
-    # Step 2 — Classification
-    classify_urls(records)
-
-    # Step 3 — Agent assignment
-    assign_agents(records)
+    # Step 2 & 3 — Intelligent Routing (Classification & Agent Assignment)
+    route_urls(records)
 
     # Step 4 — Execution
     execute_all(records, max_workers=max_workers)
+
+    # Step 5 — Google Drive Sync
+    creds_path = os.getenv("GOOGLE_CREDENTIALS_JSON", r"C:\Users\Manas\Downloads\iavars-493816-26cf82941a0f.json")
+    if Path(creds_path).exists():
+        logger.info("Uploading assets and logs to Google Drive using credentials at %s...", creds_path)
+        records = upload_records_to_drive(records, creds_path)
+    else:
+        logger.warning("Google Drive credentials not found at %s. Skipping upload.", creds_path)
 
     # Summary
     success = sum(1 for r in records if r["status"] == "success")

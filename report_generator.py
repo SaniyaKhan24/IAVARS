@@ -16,13 +16,31 @@ from typing import List, Dict, Any
 
 
 def load_jsonl(file_path: str) -> List[Dict[str, Any]]:
-    """Load and parse the JSONL file."""
+    """Load and parse the JSONL file containing concatenated JSON objects."""
     records = []
     with open(file_path, 'r', encoding='utf-8') as f:
-        for line in f:
-            line = line.strip()
-            if line:
-                records.append(json.loads(line))
+        content = f.read()
+        
+    decoder = json.JSONDecoder()
+    pos = 0
+    length = len(content)
+    
+    while pos < length:
+        # Skip whitespace between objects
+        while pos < length and content[pos].isspace():
+            pos += 1
+            
+        if pos >= length:
+            break
+            
+        try:
+            obj, index = decoder.raw_decode(content[pos:])
+            records.append(obj)
+            pos += index
+        except json.JSONDecodeError as exc:
+            print(f"Warning: JSON decode error at position {pos}: {exc}")
+            break
+            
     return records
 
 
