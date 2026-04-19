@@ -61,12 +61,14 @@ def run_pipeline(csv_path: str | Path, *,
     execute_all(records, max_workers=max_workers)
 
     # Step 5 — Google Drive Sync
-    creds_path = os.getenv("GOOGLE_CREDENTIALS_JSON", r"C:\Users\Manas\Downloads\iavars-493816-26cf82941a0f.json")
-    if Path(creds_path).exists():
+    creds_path = os.getenv("GOOGLE_CREDENTIALS_JSON")
+    if creds_path and Path(creds_path).exists():
         logger.info("Uploading assets and logs to Google Drive using credentials at %s...", creds_path)
         records = upload_records_to_drive(records, creds_path)
     else:
-        logger.warning("Google Drive credentials not found at %s. Skipping upload.", creds_path)
+        logger.warning(
+            "GOOGLE_CREDENTIALS_JSON is not set or the file does not exist. Skipping upload."
+        )
 
     # Summary
     success = sum(1 for r in records if r["status"] == "success")

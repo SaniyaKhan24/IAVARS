@@ -7,23 +7,38 @@ Mutates records in-place.
 
 from __future__ import annotations
 
+import os
 import logging
 import json
+from pathlib import Path
 from pydantic import BaseModel
 from openai import OpenAI
+from dotenv import load_dotenv
 
 logger = logging.getLogger(__name__)
 
-# Constants as provided
-GPT_API_KEY = "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"
-GPT_BASE_URL = "https://integrate.api.nvidia.com/v1"
-GPT_MODEL = "openai/gpt-oss-120b"
+# Load the project-level .env file once when this module is imported.
+load_dotenv(Path(__file__).resolve().parents[1] / ".env")
 
-# Initialize client
-client = OpenAI(
-    api_key=GPT_API_KEY,
-    base_url=GPT_BASE_URL,
-)
+GPT_API_KEY = os.getenv("GPT_API_KEY")
+GPT_BASE_URL = os.getenv("GPT_BASE_URL", "https://integrate.api.nvidia.com/v1")
+GPT_MODEL = os.getenv("GPT_MODEL", "openai/gpt-oss-120b")
+
+
+def _build_client() -> OpenAI:
+    """Create the OpenAI-compatible client from environment configuration."""
+    if not GPT_API_KEY:
+        raise RuntimeError(
+            "Missing GPT_API_KEY. Add it to IAVARS/.env before running the pipeline."
+        )
+
+    return OpenAI(
+        api_key=GPT_API_KEY,
+        base_url=GPT_BASE_URL,
+    )
+
+
+client = _build_client()
 
 class RoutingResult(BaseModel):
     platform: str
