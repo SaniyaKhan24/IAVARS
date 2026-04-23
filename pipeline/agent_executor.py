@@ -66,9 +66,14 @@ def _ensure_yt_dlp_available() -> str:
     )
 
 
+def _is_ffmpeg_available() -> bool:
+    """Check if ffmpeg is available on PATH."""
+    return shutil.which("ffmpeg") is not None
+
+
 def _build_youtube_filename(url: str) -> str:
     short_hash = hashlib.sha1(url.encode("utf-8")).hexdigest()[:8]
-    return f"youtube_{short_hash}.mp4"
+    return f"youtube_{short_hash}"
 
 
 def youtube_agent(record: dict) -> None:
@@ -77,19 +82,29 @@ def youtube_agent(record: dict) -> None:
     downloads_dir = Path("downloads")
     downloads_dir.mkdir(parents=True, exist_ok=True)
 
-    output_name = _build_youtube_filename(url)
-    output_template = str(downloads_dir / output_name)
+    base_name = _build_youtube_filename(url)
     yt_dlp_exec = _ensure_yt_dlp_available()
+    has_ffmpeg = _is_ffmpeg_available()
 
+    # Build command: prefer merge-output-format (no re-encode) over recode-video
+    output_template = str(downloads_dir / f"{base_name}.%(ext)s")
     command = [
         yt_dlp_exec,
-        "-o",
-        output_template,
-        "--recode-video",
-        "mp4",
+        "-o", output_template,
         "--no-warnings",
-        url,
+        "--no-playlist",
     ]
+
+    if has_ffmpeg:
+        # Merge to mp4 container without re-encoding (fast)
+        command.extend(["--merge-output-format", "mp4"])
+    else:
+        # Without ffmpeg, request best single mp4 stream
+        command.extend(["-f", "best[ext=mp4]/best"])
+
+    command.append(url)
+
+    logger.info("  [yt-dlp] Running: %s", " ".join(command))
 
     try:
         completed = subprocess.run(
@@ -98,20 +113,37 @@ def youtube_agent(record: dict) -> None:
             stderr=subprocess.STDOUT,
             text=True,
             check=True,
+            timeout=300,  # 5-minute timeout per video
         )
+        logger.info("  [yt-dlp] stdout: %s", completed.stdout[-500:] if completed.stdout else "(empty)")
+    except subprocess.TimeoutExpired:
+        raise RuntimeError("yt-dlp timed out after 300 seconds")
     except subprocess.CalledProcessError as exc:
         raise RuntimeError(
-            f"yt-dlp failed: {exc.returncode} - {exc.output.strip()}"
+            f"yt-dlp failed (exit {exc.returncode}): {exc.output.strip()[-500:]}"
         ) from exc
 
-    downloaded_path = downloads_dir / output_name
-    if not downloaded_path.exists():
+    # Find the downloaded file — yt-dlp may produce .mp4, .webm, .mkv etc.
+    downloaded_path = None
+    for ext in (".mp4", ".webm", ".mkv", ".avi", ".mov", ".flv"):
+        candidate = downloads_dir / f"{base_name}{ext}"
+        if candidate.exists():
+            downloaded_path = candidate
+            break
+
+    if downloaded_path is None:
+        # Fallback: check for any file starting with base_name
+        matches = list(downloads_dir.glob(f"{base_name}.*"))
+        if matches:
+            downloaded_path = matches[0]
+
+    if downloaded_path is None:
         raise RuntimeError(
-            f"yt-dlp reported success but output file was not found: {downloaded_path}"
+            f"yt-dlp reported success but output file was not found: {downloads_dir / base_name}.*"
         )
 
     record["message"] = f"Downloaded -> {downloaded_path.as_posix()}"
-    record["download_link"] = f"/downloads/{output_name}"
+    record["download_link"] = f"/downloads/{downloaded_path.name}"
 
 
 def drive_agent(record: dict) -> None:

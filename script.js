@@ -293,17 +293,26 @@ function updateProgressDisplay(progress) {
         loadingSubtext.textContent = `Processing ${current}/${total} (${percent}%) | Passed: ${success} | Failed: ${failure}`;
     }
 
-    // Update progress bar if exists
+    // Update progress bar
     const progressBar = DOM.loadingContainer.querySelector('.progress-bar');
     if (progressBar && total > 0) {
         const percent = (current / total) * 100;
         progressBar.style.width = percent + '%';
     }
 
+    // Update progress percentage text
+    const progressPercent = DOM.loadingContainer.querySelector('.progress-percent');
+    if (progressPercent && total > 0) {
+        const percent = Math.round((current / total) * 100);
+        progressPercent.textContent = `${percent}%`;
+    }
+
     // Update current URL if exists
     const currentUrlEl = DOM.loadingContainer.querySelector('.current-url');
     if (currentUrlEl && url) {
         currentUrlEl.textContent = truncateUrl(url, 80);
+    } else if (currentUrlEl) {
+        currentUrlEl.textContent = '';
     }
 
     // Stop polling if complete
@@ -375,6 +384,14 @@ function createResultCard(record) {
         minute: '2-digit',
     });
 
+    // Build platform & tool badges
+    const platform = record.platform || 'Unknown';
+    const tool = record.tool || '';
+    let badgesHTML = `<span class="badge badge-platform">${escapeHtml(platform)}</span>`;
+    if (tool) {
+        badgesHTML += `<span class="badge badge-tool">${escapeHtml(tool)}</span>`;
+    }
+
     // Build action button HTML
     let actionHTML = '';
     if (record.status === 'success' && record.download_link) {
@@ -385,9 +402,11 @@ function createResultCard(record) {
                rel="noopener noreferrer"
                class="view-btn">
                 <svg class="view-btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                    <polyline points="7 10 12 15 17 10"/>
+                    <line x1="12" y1="15" x2="12" y2="3"/>
                 </svg>
-                View / Download
+                Download
             </a>
         `;
     } else if (record.status === 'success' && !record.download_link) {
@@ -396,11 +415,17 @@ function createResultCard(record) {
         actionHTML = '<span class="view-btn disabled">Failed</span>';
     }
 
+    // Build the message display — truncate long error messages
+    const displayMessage = record.message && record.message.length > 120
+        ? record.message.substring(0, 120) + '...'
+        : (record.message || '');
+
     card.innerHTML = `
         <div class="result-status ${statusClass}">${statusIcon}</div>
         <div class="result-content">
-            <div class="result-url" title="${record.url}">${truncateUrl(record.url)}</div>
-            <div class="result-message">${escapeHtml(record.message)}</div>
+            <div class="result-url" title="${escapeHtml(record.url)}">${truncateUrl(record.url)}</div>
+            <div class="result-badges">${badgesHTML}</div>
+            <div class="result-message">${escapeHtml(displayMessage)}</div>
             <div class="result-time">${timestamp}</div>
         </div>
         <div class="result-action">

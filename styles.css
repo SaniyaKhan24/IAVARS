@@ -308,14 +308,43 @@ body {
     font-size: 0.875rem;
 }
 
-..current-url {
+.current-url {
     font-size: 0.875rem;
     color: var(--text-secondary);
-    max-width: 360px;
+    max-width: 480px;
     word-break: break-all;
     margin-top: 10px;
     font-style: italic;
+    text-align: center;
+    opacity: 0.8;
 }
+
+.progress-track {
+    width: 100%;
+    max-width: 400px;
+    height: 6px;
+    background: var(--surface-light);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-top: 8px;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--primary) 0%, var(--primary-light) 100%);
+    border-radius: 3px;
+    transition: width 0.4s ease;
+}
+
+.progress-percent {
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+    margin-top: 4px;
+    font-variant-numeric: tabular-nums;
+}
+
+/* ========================================
    RESULTS SECTION
    ======================================== */
 
@@ -437,7 +466,7 @@ body {
     border: 1px solid rgba(148, 163, 184, 0.12);
     border-radius: 18px;
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: auto 1fr auto;
     gap: 16px;
     align-items: center;
     transition: all 0.3s ease;
@@ -502,6 +531,37 @@ body {
 .result-time {
     font-size: 0.75rem;
     color: var(--text-tertiary);
+}
+
+.result-badges {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 2px;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.badge-platform {
+    background: rgba(99, 102, 241, 0.15);
+    color: var(--primary-light);
+    border: 1px solid rgba(99, 102, 241, 0.25);
+}
+
+.badge-tool {
+    background: rgba(245, 158, 11, 0.12);
+    color: var(--warning);
+    border: 1px solid rgba(245, 158, 11, 0.25);
 }
 
 .result-action {
